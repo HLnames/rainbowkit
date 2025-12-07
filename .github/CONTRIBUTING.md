@@ -3,6 +3,7 @@
 Thanks for your interest in contributing to RainbowKit! Please take a moment to review this document **before submitting a pull request.**
 
 If you want to contribute but aren't sure where to start, you can create a [new discussion](https://github.com/rainbow-me/rainbowkit/discussions).
+For answers to more questions, [Ask DeepWiki](https://deepwiki.com/rainbow-me/rainbowkit).
 
 ## Pull requests
 
@@ -12,7 +13,7 @@ It's never a fun experience to have your pull request declined after investing a
 
 ## Prerequisites
 
-This project uses [`pnpm`](https://pnpm.io) as a package manager. The required `pnpm` version to get started is `^10.8.0`.
+This project uses [`pnpm`](https://pnpm.io) as a package manager. Use `corepack enable pnpm` to install the required `pnpm` version to get started.
 
 ## Development environment
 

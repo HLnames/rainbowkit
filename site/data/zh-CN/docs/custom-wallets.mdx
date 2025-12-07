@@ -1,15 +1,15 @@
 ---
 title: 自定义钱包
-description: 创建自定义钱包
+description: 创建一个自定义钱包
 ---
 
 # 自定义钱包
 
-## 创建自定义钱包
+## 创建一个自定义钱包
 
-> 注意：此API不稳定，很可能在不久的将来发生变化。 我们将随着时间推移增加更多内置钱包。 如果您对任何特定的钱包有兴趣，[请告诉我们](https://github.com/rainbow-me/rainbowkit/issues)。
+> 注意：此API不稳定，并有可能在不久的将来发生变化。我们将逐步增加更多内置钱包。如果有任何特定的钱包感兴趣，请[让我们知道](https://github.com/rainbow-me/rainbowkit/issues) 。
 
-`钱包`函数类型提供帮助你定义自己的自定义钱包。 您的`Wallet`函数返回值上可以配置以下属性：
+提供`Wallet`函数类型，以帮助您定义自己的自定义钱包。可以在`Wallet`函数的返回值上配置以下属性：
 
 ### 钱包属性
 
@@ -19,7 +19,7 @@ description: 创建自定义钱包
       name: 'id',
       required: true,
       type: 'string',
-      description: '每个钱包的唯一 ID',
+      description: '钱包的唯一 ID',
     },
     {
       name: 'name',
@@ -37,21 +37,21 @@ description: 创建自定义钱包
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: '用于移动设备的可选短名',
+      description: '移动端使用的可选短名称',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        '钱包图标的URL，或者一个解析为Base64数据URL的promise',
+        '钱包图标的网址，或者一个解析为 Base64 数据网址的 promise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        '用于同时具有浏览器扩展和移动应用的钱包的下载流程中使用的强调颜色',
+        '在下载流程中用于同时具有浏览器扩展和移动应用程序的钱包的强调色',
     },
     {
       name: 'iconBackground',
@@ -65,8 +65,7 @@ description: 创建自定义钱包
       type: 'boolean | undefined',
       description: (
         <>
-          钱包是否已知已安装，或{' '}
-          <code>undefined</code> 若未确定
+            钱包是否已知安装，如果未安装则为 <code>undefined</code>
         </>
       ),
     },
@@ -75,7 +74,7 @@ description: 创建自定义钱包
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: '包含下载URL的对象',
+      description: '包含下载网址的对象',
     },
     {
       name: 'hidden',
@@ -83,7 +82,7 @@ description: 创建自定义钱包
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        '计算此钱包是否应从列表中隐藏的函数。 这是定义通用备用钱包的有用功能，例如，内置的 "Injected Wallet" 备用功能就利用了这一特性',
+        '用于检测这个钱包是否应该从列表中隐藏的函数。这对于定义通用回退钱包很有用,例如内置的 "Injected Wallet" 回退利用了此功能',
     },
     {
       name: 'createConnector',
@@ -91,7 +90,7 @@ description: 创建自定义钱包
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        '用于提供不同连接方法的连接器实例和配置的函数，具体方法如下所述',
+        '提供连接器实例和不同连接方法的配置的函数，如下所述',
     },
     {
       name: 'mobile',
@@ -99,14 +98,14 @@ description: 创建自定义钱包
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        '用于解析移动钱包连接URI的函数',
+        '用于解析移动钱包连接 URI 的函数',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: '用于解析桌面应用程序深层链接的函数',
+      description: '用于解析桌面应用深层链接的函数',
     },
     {
       name: 'qrCode',
@@ -114,7 +113,7 @@ description: 创建自定义钱包
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        '包含用于解析QR码URI的函数的对象，以及可选的移动钱包设置说明',
+        '包含一个用于解析二维码URI的函数的对象,以及可选的移动钱包设置说明',
     },
     {
       name: 'extension',
@@ -122,19 +121,19 @@ description: 创建自定义钱包
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        '包含可选浏览器扩展设置说明的对象',
+        '包含可选的浏览器扩展设置说明的对象',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: '用于提供连接器实例的函数',
+      description: '提供连接器实例的函数',
     },
   ]}
 />
 
-### 下载链接属性
+### 下载网址属性
 
 <PropsTable
   data={[
@@ -142,71 +141,71 @@ description: 创建自定义钱包
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'Google Play 网址',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'Apple App Store 网址',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        '移动用户在 `android` 或 `ios` 不可用时的着陆页',
+        '当 `android` 或 `ios` 不可用时，移动用户的登录页面',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        '用户扫描移动下载二维码后的着陆页',
+        '移动端下载二维码扫描后的登陆页面',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome Web Store 网址',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge 插件 URL',
+      description: 'Microsoft Edge Add-ons 网址',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox 浏览器插件 URL',
+      description: 'Firefox Browser Add-ons 网址',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera 插件 URL',
+      description: 'Opera add-ons 网址',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac App Store 网址',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        '桌面扩展用户当浏览器兼容URL不可用时的着陆页',
+        '当浏览器不兼容某些网址时，桌面扩展用户会看到的登陆页面',
     },
   ]}
 />
 
 ### 示例
 
-例如，要使用 WalletConnect 创建一个自定义钱包：
+例如，使用WalletConnect创建一个自定义钱包：
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';

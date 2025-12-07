@@ -11,12 +11,27 @@ export interface CoinbaseWalletOptions {
   appIcon?: string;
 }
 
-interface CoinbaseWallet {
+// supports preference, paymasterUrls, subAccounts
+type AcceptedCoinbaseWalletParameters = Omit<
+  CoinbaseWalletParameters<'4'>,
+  'headlessMode' | 'version' | 'appName' | 'appLogoUrl'
+>;
+
+interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
   (params: CoinbaseWalletOptions): Wallet;
-  preference?: CoinbaseWalletParameters<'4'>['preference'];
 }
 
-export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
+/**
+ * @deprecated Use `baseAccount` instead. This wallet connector will be removed in a future version.
+ */
+export const coinbaseWallet: CoinbaseWallet = ({
+  appName,
+  appIcon,
+}: CoinbaseWalletOptions): Wallet => {
+  // Extract all AcceptedCoinbaseWalletParameters from coinbaseWallet
+  // This approach avoids type errors for properties not yet in upstream connector
+  const { preference, ...optionalConfig } = coinbaseWallet;
+
   const getUri = (uri: string) => uri;
   const ios = isIOS();
 
@@ -99,10 +114,17 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
           },
         }),
     createConnector: (walletDetails: WalletDetailsParams) => {
+      // Build preference config based on user input, always disabling telemetry
+      const preferenceConfig: CoinbaseWalletParameters<'4'>['preference'] =
+        typeof preference === 'string'
+          ? { options: preference, telemetry: false }
+          : { options: 'all', ...preference, telemetry: false };
+
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
-        preference: coinbaseWallet.preference,
+        ...optionalConfig,
+        preference: preferenceConfig,
       });
 
       return createConnector((config) => ({

@@ -1,5 +1,108 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.10
+
+### Patch Changes
+
+- e74f604: Improve UI on the mobile connect flow to hint to users that they can horizontally scroll to see additional wallet connectors
+- eb72c37: Fix Gemini wallet connector to use `icon` instead of `icons` in `appMetadata`
+- e58367e: Fix mobile visibility for Coin98, CLV, SafePal, Frontier, and BeraSig wallets.
+- b7b7b43: Rename the Argent wallet connector to `readyWallet`
+- 507f583: Add additional wallet flags to `isMetaMask()` to detect impersonating providers.
+- 16963de: Add `ctrlWallet` wallet connector to replace `xdefiWallet`. XDEFI Wallet has been rebranded to CTRL Wallet.
+- 6c745a5: Disable third-party connector telemetry by default for user privacy. h/t @TimDaub
+
+  **To opt-in to WalletConnect analytics:**
+  
+  With `getDefaultConfig`:
+  ```ts
+  const config = getDefaultConfig({
+    /** ... **/
+    walletConnectParameters: {
+      telemetryEnabled: true,
+    },
+  });
+  ```
+  
+  **To opt-in to Base Account telemetry:**
+  ```ts
+  baseAccount.preference = {
+    telemetry: true,
+  };
+  ```
+  
+  **To opt-in to MetaMask analytics:**
+  ```ts
+  metaMaskWallet.enableAnalytics = true;
+  ```
+
+## 2.2.9
+
+### Patch Changes
+
+- e52ca05: Add `baseAccount` wallet connector, replacing `coinbaseWallet` in the default wallet list
+- 1e67f0d: Improved detection for nova wallet provider
+- d92a6c7: Fixed type compatibility for `connect()` parameters in Wagmi `^2.17.0`
+- 0b9052c: Add binance wallet chrome extension download url
+- b34d6c1: Added `portoWallet`.
+- 66bcc18: Universal Profiles wallet connector
+- fe0496e: **Added Gemini Wallet support**
+
+  Added Gemini Wallet as a supported wallet connector with proper icon and configuration.
+
+- 5698ade: fix monad logo in rainbowkit package and include monad testnet in the example
+- 1520f59: Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
+
+## 2.2.8
+
+### Patch Changes
+
+- f542876: The `metaMaskWallet` wallet connector now utilizes the [MetaMask SDK](https://docs.metamask.io/sdk/) for more reliable, faster connections on mobile
+
+## 2.2.7
+
+### Patch Changes
+
+- a147620: Fixed error handling when connect requests are rejected on mobile.
+- 10090d2: Mitigated `WalletConnect Core is already initialized` warnings that began appearing with recent distributions of Wagmi and WalletConnect.
+- 50c7f13: Added missing `rdns` metadata for wallet connectors that now support EIP-6963.
+- 15ddd4a: Improved QR Code error correction and rendering with [`cuer`](https://github.com/wevm/cuer)
+
+## 2.2.6
+
+### Patch Changes
+
+- 624a38a: The `coinbaseWallet` connector now supports additional SDK configuration options to enable [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) for your dapp.
+
+  ```tsx
+  import { coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
+
+  // Configure Paymaster for gas sponsorship
+  coinbaseWallet.paymasterUrls = {
+    [base.id]: "...",
+  };
+
+  // Enable Sub Accounts
+  coinbaseWallet.subAccounts = {
+    enableAutoSubAccounts: true,
+    defaultSpendLimits: {
+      // ...
+    },
+  };
+  ```
+
+- f6ad6aa: Added support for Superposition chain
+
+## 2.2.5
+
+### Patch Changes
+
+- 3d73508: Added ZilPay Wallet support with `zilPayWallet` wallet connector
+- c5a9cc1: Fixed SVG encoding in wallet connector icons for Cool Mode
+- 8515fd3: Resolved a warning for mismatched dApp url metadata on recent versions of WalletConnect
+- 5b54649: MEW Wallet now supports WalletConnect on mobile
+- 03ae0d0: Added xPortal Wallet support with `xPortalWallet` wallet connector
+
 ## 2.2.4
 
 ### Patch Changes
@@ -503,7 +606,7 @@
   If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
   - [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-  - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+  - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
 ## 1.3.6
 

@@ -1,7 +1,7 @@
 {
   "name": "rainbowkit-next-app",
   "private": true,
-  "version": "0.0.103",
+  "version": "0.0.109",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,15 +10,15 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
-    "next": "^15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "viem": "2.23.12",
-    "wagmi": "^2.14.16"
+    "next": "^15.3.6",
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2",
+    "viem": "2.38.0",
+    "wagmi": "^2.19.3"
   },
   "devDependencies": {
-    "@types/node": "^20.14.8",
-    "@types/react": "^19.0.6",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.1.8",
     "eslint-config-next": "^15.1.7",
     "typescript": "5.5.4"
   }

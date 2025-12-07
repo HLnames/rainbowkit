@@ -7,7 +7,7 @@ description: تخصيص قائمة المحافظ
 
 ## تخصيص قائمة المحافظ
 
-يمكنك استيراد المحافظ الفردية من `'@rainbow-me/rainbowkit/wallets'` بالإضافة إلى وظيفة `connectorsForWallets` لبناء قائمتك الخاصة من المحافظ مع موصلاتها الضرورية. بهذه الطريقة لديك التحكم الكامل في المحافظ التي ترغب في عرضها، وبالترتيب الذي ترغب فيه.
+يمكنك استيراد المحافظ الفردية من `'@rainbow-me/rainbowkit/wallets'` بالإضافة إلى وظيفة `connectorsForWallets` لبناء قائمتك الخاصة من المحافظ مع موصلاتها الضرورية. لديك السيطرة الكاملة على أي المحافظ تظهر، وفي أي ترتيب.
 
 على سبيل المثال، يمكنك اختيار إظهار Rainbow والمحافظ الاحتياطية العامة فقط.
 
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-يمكنك بعد ذلك تمرير الموصلات إلى `createConfig` من Wagmi.
+يمكنك بعد ذلك تمرير الموصلات الخاصة بك إلى `createConfig` التابع لواغمي.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -64,7 +64,7 @@ const App = () => (
 
 #### محافظ عامة
 
-المحافظ التالية تتميز بتوجهات الاتصال العامة بدلاً من التطبيقات المحددة. نتيجة لذلك، يوصى دائمًا بتضمين هذه المحافظ.
+تم تخصيص المحافظ التالية لطرق الاتصال العامة العامة بدلاً من التطبيقات المحددة. يوصى دائمًا بتضمين هذه المحافظ.
 
 ##### WalletConnect
 
@@ -76,19 +76,19 @@ const App = () => (
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### المحفظة المُدخلة
+##### المحفظة المدخلية
 
-هذه هي خيار المحفظة الاحتياطي المصمم للمواقف التي توجد فيها `window.ethereum` ولكن لم يتم تقديمها بواسطة محفظة أخرى في القائمة. ستختفي هذه المحفظة تلقائيًا من القائمة عندما لا يكون الاحتياط ضروريًا أو إذا لم تكن هناك محفظة مُدخلة متاحة.
+هذا هو خيار المحفظة الاحتياطي المصمم للسيناريوهات التي يوجد فيها `window.ethereum` لكن لم يتم تقديمها من قبل محفظة أخرى في القائمة. هذه المحفظة ستختفي من القائمة تلقائياً عندما لا يكون هناك حاجة للاحتياط أو إذا لم تكن هناك محفظة مدخلة متاحة.
 
-**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ المُدخلة.**
+**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ المدخلية.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### محفظة الأمان
+##### محفظة آمنة
 
-للتطبيقات اللامركزية التي تدعم تطبيقات الأمان لتمكين المستخدمين من الاتصال بسهولة بحفنة الأمان الخاصة بهم أو التوقيع المتعدد، قم بتضمين خيار `safeWallet` لتوصيلات تلقائية. سيظهر خيار محفظة الأمان فقط في بيئة مستعرض محفظة الأمان.
+للتطبيقات اللامركزية (dApps) التي تدعم التطبيقات الآمنة للسماح للمستخدمين بالاتصال بسهولة بمخزنهم الآمن أو التوقيع المتعدد، قم بتضمين خيار `safeWallet` للاتصالات التلقائية. سيظهر الخيار الآمن فقط في بيئة متصفح المحفظة الآمنة.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,31 +98,69 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 المحافظ التالية متوفرة عبر الكائن `wallet` (ترتيب أبجدي).
 
-#### محفظة 1inch
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### أرجنت
+#### Backpack
 
 ```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### برسيج
+#### الحساب الأساسي (المعروف سابقًا باسم محفظة كوين بيس)
+
+يدعم موصل المحفظة هذا حسابًا أساسيًا، وهو تطور لمحفظة كوين بيس الذكية. يوفر مصادقة سهلة ويتميز بإمكانيات متقدمة مثل الحسابات الفرعية وصلاحيات الإنفاق.
+
+تتماشى خيارات التكوين مع [مرجع الحساب الأساسي SDK](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
+```
+
+#### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### أفضل محفظة
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Binance Web3
+#### محفظة بيفروست
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Binance Web3 Wallet
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -132,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### محفظة Bifrost
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -152,48 +184,31 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Bloom
+#### Bloom Wallet
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Brave
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Bybit
+#### Bybit Wallet
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-يدعم موصل المحفظة هذا كل من تطبيق ومحفظة Coinbase Wallet وكذلك Coinbase Smart Wallet على الويب.
-
-يتوفر جدال `preference` للتحكم في ما إذا كان Smart Wallet مفعلًا ومتاحًا للمستخدمين. تم توثيق السلوك المعتمد على التفضيل [هنا](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
-
-سيتم تمكين Smart Wallet بشكل افتراضي مع `all` في أوائل يونيو، دون ترقية إضافية.
-
-يمكن للمطورين اختبار Smart Wallet باستخدام سلاسل `sepolia` و `baseSepolia` اليوم عبر تعيين `smartWalletOnly` وتضمين `coinbaseWallet` في قائمة المحافظ الخاصة بهم كالتالي:
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Enable Coinbase Smart Wallet for testing
-coinbaseWallet.preference = 'smartWalletOnly';
-```
-
-#### محفظة Coin98
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Compass
+#### Compass Wallet
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -205,13 +220,19 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Dawn
+#### محفظة CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Enkrypt
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -223,22 +244,37 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Frame
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Frontier
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Gate
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### محفظة الجوزاء
+
+هذا الموصل الذكي للمحفظة يمكّن من التوثيق السلس من خلال مفاتيح المرور في keys.gemini.com - لا حاجة لتنزيلات أو إضافات أو مفاتيح API. تعمل بسلاسة.
+
+البارامتر `appName` المطلوب للتعرف على تطبيقك الموزع (dApp)، و `appIcon` اختياري من أجل تمييز تجربة الاتصال.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -247,13 +283,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة ioPay
+#### ioPay Wallet
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kaia
+#### Kaia Wallet
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -265,13 +301,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kraken
+#### Kraken Wallet
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kresus
+#### Kresus Wallet
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -283,16 +319,10 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Magic Eden
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### محفظة MEW
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
@@ -301,7 +331,19 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة OKX
+#### محفظة MEW
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Nova Wallet
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -331,22 +373,34 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Rabby
+#### بورتو
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rainbow
+#### رينبو
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Ramper
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### جاهز
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### محفظة Ronin
@@ -385,7 +439,7 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### محفظة الثقة
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -397,16 +451,22 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### فالورا
+#### Valora
 
 ```tsx
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة XDEFI
+#### Wigwam
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
@@ -415,10 +475,10 @@ import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### وجوام
+#### ZilPay
 
 ```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### أمثلة
@@ -447,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-عرض Rainbow و MetaMask و Coinbase بالإضافة إلى المحافظ العامة الأخرى.
+عرض Rainbow و MetaMask و Base Account بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -465,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -478,16 +538,16 @@ const connectors = connectorsForWallets(
 
 #### مجموعات متعددة
 
-يمكنك استخدام مفتاح `groupName` لتسمية مجموعات المحفظة المختلفة. هذا مفيد إذا كنت ترغب في التواصل مع المستخدمين حول المحافظ التي توصي بها، بالإضافة إلى المحافظ الأخرى المحتملة.
+يمكنك استخدام مفتاح `groupName` لتسمية مجموعات محافظ مختلفة. هذا مفيد إذا كنت ترغب في التواصل مع المستخدمين حول المحافظ التي توصي بها، بالإضافة إلى المحافظ الأخرى المحتملة.
 
-أوصي بRainbow و MetaMask، ولكن أقدم أيضاً Coinbase بالإضافة إلى المحافظ العامة الأخرى.
+أوصي بRainbow و MetaMask، ولكن أقدم أيضاً Base Account بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -499,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

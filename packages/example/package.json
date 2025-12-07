@@ -1,20 +1,22 @@
 {
   "name": "example",
-  "version": "0.0.111",
+  "version": "0.0.117",
   "description": "",
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@rainbow-me/rainbow-button": "workspace:*",
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
-    "@rainbow-me/rainbow-button": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
-    "next": "^15.2.4",
+    "cuer": "^0.0.3",
+    "next": "^15.3.6",
     "next-auth": "4.24.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "viem": "2.23.12",
-    "wagmi": "^2.14.16"
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2",
+    "viem": "2.38.0",
+    "wagmi": "^2.19.3",
+    "mipd": "^0.0.7"
   },
   "scripts": {
     "dev": "next dev",

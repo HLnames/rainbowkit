@@ -1,5 +1,49 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.15
+
+### Patch Changes
+
+- 060e074: Security update: upgraded React and Next.js in create-rainbowkit template to patch critical vulnerabilities.
+
+  **Critical CVEs Fixed:**
+
+  - CVE-2025-55182: React Server Components RCE - https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components
+  - CVE-2025-66478: Next.js RCE - https://nextjs.org/blog/CVE-2025-66478
+
+  **Updated:**
+
+  - React/React-DOM: 19.1.0 → 19.1.2
+  - Next.js: 15.3.3 → 15.3.6
+
+- eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
+
+## 0.3.14
+
+### Patch Changes
+
+- d92a6c7: Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
+
+## 0.3.13
+
+### Patch Changes
+
+- 4ace91f: Update template dependencies to use wagmi ^2.15.6.
+- c60deea: Upgrade @types/react to 19.1.8 and @types/react-dom to 19.1.6 in template.
+
+## 0.3.12
+
+### Patch Changes
+
+- 77de527: Update templates to use wagmi 2.15.5
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+
+## 0.3.11
+
+### Patch Changes
+
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
+
 ## 0.3.10
 
 ### Patch Changes

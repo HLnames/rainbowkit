@@ -226,11 +226,11 @@
   },
 
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Put Argent on your home screen for faster access to your wallet.",
-          "title": "Open the Argent app"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
           "description": "Create a wallet and username, or import an existing wallet.",
@@ -422,6 +422,20 @@
         "step3": {
           "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
           "title": "Tap the WalletConnect button"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Install the Binance Wallet extension",
+          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
       }
     },
@@ -1199,11 +1213,11 @@
       }
     },
 
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Install the XDEFI Wallet extension",
-          "description": "We recommend pinning XDEFI Wallet to your taskbar for quicker access to your wallet."
+          "title": "Install the CTRL Wallet extension",
+          "description": "We recommend pinning CTRL Wallet to your taskbar for quicker access to your wallet."
         },
         "step2": {
           "title": "Create or Import a Wallet",
@@ -1453,6 +1467,37 @@
       }
     },
 
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Open keys.gemini.com",
+          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+        },
+        "step2": {
+          "title": "Create Your Wallet Instantly",
+          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+        },
+        "step3": {
+          "title": "Scan to Connect",
+          "description": "Scan the QR code to instantly connect your wallet - it just works."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Go to keys.gemini.com",
+          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+        },
+        "step2": {
+          "title": "One-Click Setup",
+          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+        },
+        "step3": {
+          "title": "Connect and Go",
+          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+        }
+      }
+    },
+
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1466,6 +1511,57 @@
         "step3": {
           "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
           "title": "Tap the Scan QR button"
+        }
+      }
+    },
+
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "You can easily backup your wallet using the cloud backup feature.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the scan button"
+        }
+      }
+    },
+
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the ZilPay app",
+          "description": "Add ZilPay to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap the scan button",
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+        }
+      }
+    },
+
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Nova Wallet app",
+          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap the scan button",
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }

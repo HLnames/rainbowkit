@@ -1,15 +1,15 @@
 ---
-title: 自定义 ConnectButton
-description: 创建一个自定义的 ConnectButton
+title: 自定义连接按钮
+description: 创建自定义连接按钮
 ---
 
-# 自定义 ConnectButton
+# 自定义连接按钮
 
-## 创建一个自定义的 ConnectButton
+## 创建自定义连接按钮
 
-您可以使用低级别的 `ConnectButton.Custom` 来创建自己的自定义连接按钮。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。
+您可以使用低级别的 `ConnectButton.Custom` 来创建您自己的自定义连接按钮。此组件会渲染一个函数，其中包含重新实现内置按钮所需的一切。
 
-内置按钮的最小实现可能看起来像这样:
+内置按钮的简化重实现可以像这样：
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-以下的 props 会传递给你的渲染函数。
+以下 `props` 传递给您的渲染函数。
 
 ### 账户属性
 
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '包含当前账户详细信息的对象，详见下文',
+        '包含当前账户详细信息的对象，如下所述',
     },
     {
       name: 'account.address',
@@ -130,8 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          完整的账户地址，例如
-          "0x7a3d05c70581bD345fe117c06e45f9669205384f"
+          完整的账户地址，例如 "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
     },
@@ -139,7 +138,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: '账户余额的小数表示',
+      description: '账户余额（以小数表示）',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +146,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          以字符串格式显示的账户余额，例如{' '}
+          账户余额格式化为字符串，例如 {' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +157,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          余额的货币符号，例如 <code>ETH</code>
+          账户余额的符号，例如 <code>ETH</code>
         </>
       ),
     },
@@ -168,7 +167,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          余额格式化为3个有效数字，附带符号，例如 <code>1.23 ETH</code>
+          将余额格式化为3位有效数字，并带有符号，例如{' '}<code>1.23 ETH</code>
         </>
       ),
     },
@@ -178,8 +177,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          ENS名称或地址的截断版本，例如{' '}
-          <code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
+          ENS 名称或地址的截断版本，例如{' '}<code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -187,7 +185,7 @@ export const YourApp = () => {
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'ENS头像的URI',
+      description: 'ENS 头像的 URI',
     },
     {
       name: 'account.ensName',
@@ -195,7 +193,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          ENS名称，例如 <code>rainbowwallet.eth</code>
+          ENS名称，例如{' '}<code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -204,7 +202,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        '布尔值，指示账户是否有当前链的待处理交易',
+        '布尔值，表示当前链上该账户是否有待处理的交易',
     },
   ]}
 />
@@ -218,27 +216,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '包含当前链详细信息的对象，详见下文',
+        '包含当前链的详细信息的对象，如下所述',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: '链是否有指定的图标',
+      description: '是否为链指定了图标',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        '链图标的URL（下载Base64数据URL时也可能未定义）',
+        '链图标 URL（在下载 Base64 数据 URL 时可能也是未定义的）',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        '图像加载时可见的链图标背景',
+        '图片加载时会显示的链图标背景',
     },
     {
       name: 'chain.id',
@@ -246,7 +244,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          链ID，例如 <code>1</code>
+          链 ID,例如 <code>1</code>
         </>
       ),
     },
@@ -265,7 +263,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        '布尔值，指示当前链是否不被支持',
+        '一个布尔值，表示当前链是否被支持。',
     },
   ]}
 />
@@ -278,39 +276,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: '用于打开账户模态框的函数',
+      description: '打开账户模态窗口的函数',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: '用于打开链模态框的函数',
+      description: '打开链模态对话框的函数',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: '用于打开连接模态框的函数',
+      description: '打开连接钱包模态框的函数',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '布尔值，指示账户模态框是否打开',
+        '指示账户模态窗口是否打开的布尔值',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: '布尔值，指示链模态框是否打开',
+      description: '一个布尔值，指示链式模态框是否打开',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '布尔值，指示连接模态框是否打开',
+        '表示连接模态框是否打开的布尔值',
     },
   ]}
 />
@@ -331,7 +329,8 @@ export const YourApp = () => {
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        '认证状态，如果未配置认证则为未定义',
+        '身份验证状态，如果尚未配置身份验证，则为 undefined',
     },
   ]}
 />
+

@@ -1,5 +1,59 @@
 # with-next-rainbow-button
 
+## 0.0.36
+
+### Patch Changes
+
+- 060e074: Security update: upgraded React and Next.js to patch critical vulnerabilities.
+
+  **Critical CVEs Fixed:**
+
+  - CVE-2025-55182: React Server Components RCE - https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components
+  - CVE-2025-66478: Next.js RCE - https://nextjs.org/blog/CVE-2025-66478
+
+  **Updated:**
+
+  - React/React-DOM: 19.1.0 → 19.1.2
+  - Next.js: 15.3.3 → 15.3.6
+
+- eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
+  - @rainbow-me/rainbow-button@0.2.27
+
+## 0.0.35
+
+### Patch Changes
+
+- d92a6c7: Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
+- Updated dependencies [87257e6]
+  - @rainbow-me/rainbow-button@0.2.26
+
+## 0.0.34
+
+### Patch Changes
+
+- @rainbow-me/rainbow-button@0.2.25
+
+## 0.0.33
+
+### Patch Changes
+
+- @rainbow-me/rainbow-button@0.2.24
+
+## 0.0.32
+
+### Patch Changes
+
+- 77de527: Upgraded `wagmi` to `^2.15.5`.
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+  - @rainbow-me/rainbow-button@0.2.23
+
+## 0.0.31
+
+### Patch Changes
+
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
+  - @rainbow-me/rainbow-button@0.2.22
+
 ## 0.0.30
 
 ### Patch Changes

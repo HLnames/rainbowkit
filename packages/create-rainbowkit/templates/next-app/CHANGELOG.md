@@ -1,5 +1,71 @@
 # rainbowkit-next-app
 
+## 0.0.109
+
+### Patch Changes
+
+- Updated dependencies [6c745a5]
+- Updated dependencies [e74f604]
+- Updated dependencies [eb72c37]
+- Updated dependencies [e58367e]
+- Updated dependencies [b7b7b43]
+- Updated dependencies [507f583]
+- Updated dependencies [16963de]
+  - @rainbow-me/rainbowkit@2.2.10
+
+## 0.0.108
+
+### Patch Changes
+
+- Updated dependencies [e52ca05]
+- Updated dependencies [1e67f0d]
+- Updated dependencies [d92a6c7]
+- Updated dependencies [0b9052c]
+- Updated dependencies [b34d6c1]
+- Updated dependencies [66bcc18]
+- Updated dependencies [fe0496e]
+- Updated dependencies [5698ade]
+- Updated dependencies [1520f59]
+  - @rainbow-me/rainbowkit@2.2.9
+
+## 0.0.107
+
+### Patch Changes
+
+- Updated dependencies [f542876]
+  - @rainbow-me/rainbowkit@2.2.8
+
+## 0.0.106
+
+### Patch Changes
+
+- Updated dependencies [a147620]
+- Updated dependencies [10090d2]
+- Updated dependencies [50c7f13]
+- Updated dependencies [15ddd4a]
+  - @rainbow-me/rainbowkit@2.2.7
+
+## 0.0.105
+
+### Patch Changes
+
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+- Updated dependencies [624a38a]
+- Updated dependencies [f6ad6aa]
+  - @rainbow-me/rainbowkit@2.2.6
+
+## 0.0.104
+
+### Patch Changes
+
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
+- Updated dependencies [3d73508]
+- Updated dependencies [c5a9cc1]
+- Updated dependencies [8515fd3]
+- Updated dependencies [5b54649]
+- Updated dependencies [03ae0d0]
+  - @rainbow-me/rainbowkit@2.2.5
+
 ## 0.0.103
 
 ### Patch Changes

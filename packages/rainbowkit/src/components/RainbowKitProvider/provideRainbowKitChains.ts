@@ -50,6 +50,7 @@ type ChainName =
   | 'mantaTestnet'
   | 'mantle'
   | 'mantleTestnet'
+  | 'monadTestnet'
   | 'optimism'
   | 'optimismGoerli'
   | 'optimismKovan'
@@ -64,6 +65,7 @@ type ChainName =
   | 'scroll'
   | 'scrollSepolia'
   | 'sepolia'
+  | 'superposition'
   | 'unichain'
   | 'unichainSepolia'
   | 'xdc'
@@ -191,6 +193,11 @@ const mantleIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/mantle.svg')).default,
 };
 
+const monadTestnetIcon: IconMetadata = {
+  iconBackground: 'transparent',
+  iconUrl: async () => (await import('./chainIcons/monad.svg')).default,
+};
+
 const optimismIcon: IconMetadata = {
   iconBackground: '#ff5a57',
   iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
@@ -209,6 +216,11 @@ const roninIcon: IconMetadata = {
 const sankoIcon: IconMetadata = {
   iconBackground: '#000000',
   iconUrl: async () => (await import('./chainIcons/sanko.png')).default,
+};
+
+const superpositionIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/superposition.svg')).default,
 };
 
 const scrollIcon: IconMetadata = {
@@ -292,6 +304,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   mantaTestnet: { chainId: 3_441_005, ...mantaIcon },
   mantle: { chainId: 5000, ...mantleIcon },
   mantleTestnet: { chainId: 5001, ...mantleIcon },
+  monadTestnet: { chainId: 10_143, name: 'Monad Testnet', ...monadTestnetIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
@@ -306,6 +319,11 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  superposition: {
+    chainId: 55244,
+    name: 'Superposition',
+    ...superpositionIcon,
+  },
   unichain: { chainId: 130, ...unichainIcon },
   unichainSepolia: { chainId: 1301, ...unichainIcon },
   xdc: { chainId: 50, name: 'XDC', ...xdcIcon },
